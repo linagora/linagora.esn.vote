@@ -23,14 +23,8 @@
         return voteRestangular.one('user/votes').get(targetTuple);
       }
 
-      function getVotes() {
-        return $q.when({
-          data: {
-            count: 123,
-            voters: [],
-            stats: {'-1': {value: 12}, 0: {value: 88}, 1: {value: 23}}
-          }
-        });
+      function getVotes(targetTuple) {
+        return voteRestangular.one('votes').get(targetTuple);
       }
 
       function vote(targetTuple, value) {

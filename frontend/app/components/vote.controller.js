@@ -19,9 +19,11 @@
      function onVote(value, user) {
        if (!self.votes.me) {
          self.votes.count++;
-         self.votes.voters.push(user);
        }
 
+       // TODO: Push the user and limit size to N
+       // TODO: Only when user is not already in
+       self.votes.users.push(user);
        self.votes.me = {value: value};
        self.votes.stats[value].value++;
      }
