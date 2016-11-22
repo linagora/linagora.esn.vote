@@ -1,9 +1,12 @@
 'use strict';
 
-module.exports = function() {
+module.exports = function(dependencies) {
+
+  const vote = require('./vote')(dependencies);
 
   return {
-    start
+    start,
+    vote
   };
 
   function start(callback) {

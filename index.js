@@ -1,23 +1,25 @@
 'use strict';
 
-let AwesomeModule = require('awesome-module');
-let Dependency = AwesomeModule.AwesomeModuleDependency;
-let path = require('path');
-let glob = require('glob-all');
-let _ = require('lodash');
+const AwesomeModule = require('awesome-module');
+const Dependency = AwesomeModule.AwesomeModuleDependency;
+const path = require('path');
+const glob = require('glob-all');
+const _ = require('lodash');
 
 const NAME = 'vote';
 const APP_ENTRY_POINT = NAME + '.app.js';
 const MODULE_NAME = 'linagora.esn.' + NAME;
 const FRONTEND_JS_PATH = __dirname + '/frontend/app/';
 
-let voteModule = new AwesomeModule(MODULE_NAME, {
+const voteModule = new AwesomeModule(MODULE_NAME, {
   dependencies: [
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.logger', 'logger'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.auth', 'auth'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.pubsub', 'pubsub'),
+    new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.resource-link', 'resource-link'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.wrapper', 'webserver-wrapper'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.esn-config', 'esn-config'),
+    new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.middleware.resource-link', 'resourceLinkMW'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.webserver.middleware.authorization', 'authorizationMW'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.user', 'user'),
     new Dependency(Dependency.TYPE_NAME, 'linagora.esn.core.collaboration', 'collaboration'),
@@ -27,9 +29,9 @@ let voteModule = new AwesomeModule(MODULE_NAME, {
   ],
   states: {
     lib: function(dependencies, callback) {
-      let libModule = require('./backend/lib')(dependencies);
-      let vote = require('./backend/webserver/api')(dependencies, libModule);
-      let lib = {
+      const libModule = require('./backend/lib')(dependencies);
+      const vote = require('./backend/webserver/api')(dependencies, libModule);
+      const lib = {
         api: {
           vote
         },
@@ -40,9 +42,9 @@ let voteModule = new AwesomeModule(MODULE_NAME, {
     },
 
     deploy: function(dependencies, callback) {
-      let webserverWrapper = dependencies('webserver-wrapper');
-      let app = require('./backend/webserver/application')(this, dependencies);
-      let lessFile = path.resolve(__dirname, './frontend/app/style.less');
+      const webserverWrapper = dependencies('webserver-wrapper');
+      const app = require('./backend/webserver/application')(this, dependencies);
+      const lessFile = path.resolve(__dirname, './frontend/app/style.less');
 
       let frontendModules = glob.sync([
         FRONTEND_JS_PATH + '**/!(*spec).js'
