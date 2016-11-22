@@ -7,10 +7,21 @@ module.exports = function(dependencies) {
 
   return {
     getNbOfVotes,
+    getVote,
     hasVoted,
     unvote,
     vote
   };
+
+  function getVote(sourceTuple, targetTuple) {
+    return resourceLink.list({source: sourceTuple, target: targetTuple, type: CONSTANTS.VOTE_LINK_TYPE}).then(function(links) {
+      if (!links || !links.length) {
+        return {};
+      }
+
+      return links[0];
+    });
+  }
 
   function getNbOfVotes(targetTuple) {
     return resourceLink.count({target: targetTuple, type: CONSTANTS.VOTE_LINK_TYPE});

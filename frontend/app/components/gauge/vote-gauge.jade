@@ -1,0 +1,8 @@
+.vote-gauge
+  .progress(ng-if="ctrl.votes.stats")
+    .progress-bar.progress-bar-danger(ng-style="{width: ctrl.gaugeItemWidth('-1') + '%'}")
+      span {{ctrl.votes.stats['-1'].value}}
+    .progress-bar.progress-bar-warning(ng-style="{width: ctrl.gaugeItemWidth('0') + '%'}")
+      span {{ctrl.votes.stats['0'].value}}
+    .progress-bar.progress-bar-success(ng-style="{width: ctrl.gaugeItemWidth('1') + '%'}")
+      span {{ctrl.votes.stats['1'].value}}
