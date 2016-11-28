@@ -1,0 +1,12 @@
+.vote-summary
+  .votes-count
+    span.number {{ctrl.votes.count}}
+    span(ng-if="ctrl.votes.count !== 1") #{__('votes')}
+    span(ng-if="ctrl.votes.count === 1") #{__('vote')}
+  .voters
+    .voter(ng-repeat='user in ctrl.votes.users | limitTo:10 track by $index')
+      a(ng-href='/#/profile/{{::user._id}}')
+        img(ng-src="/api/users/{{user._id}}/profile/avatar")
+    span.more-ellipsis(ng-if="ctrl.votes.users.length > 10") ...
+  .gauge
+    vote-gauge(votes="ctrl.votes")

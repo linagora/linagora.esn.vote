@@ -9,4 +9,8 @@ module.exports = function(dependencies, lib, router) {
     authorizationMW.requiresAPILogin,
     controller.getVotes);
 
+  router.get('/user/votes',
+    authorizationMW.requiresAPILogin,
+    controller.getCurrentUserVote);
+
 };
