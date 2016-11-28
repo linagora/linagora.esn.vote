@@ -12,7 +12,8 @@
       bindings: {
         objectType: '=',
         objectId: '=',
-        onVote: '&'
+        onVote: '&',
+        onUnvote: '&'
       }
     };
 

@@ -1,12 +1,24 @@
 .vote-button
-  button.btn.vote-button-item(ng-class="{'btn-success': (ctrl.vote.me.value === '1') || !ctrl.vote.me, 'btn-default': (ctrl.vote.me.value !== '1')}", ng-click="ctrl.setVote('1')")
+  button.btn.vote-button-item(
+    ng-click="ctrl.switchVote('1')",
+    ng-disabled="ctrl.vote.me && ctrl.vote.me.value !== '1'",
+    ng-class="{'btn-success': (ctrl.vote.me.value === '1') || !ctrl.vote.me, 'btn-default': (ctrl.vote.me.value !== '1')}"
+  )
     img(ng-src="vote/images/positive_vote_gray.svg", ng-show="ctrl.vote.me && (ctrl.vote.me.value !== '1')")
     img(ng-src="vote/images/positive_vote_green.svg", ng-show="!ctrl.vote.me || (ctrl.vote.me.value === '1')")
 
-  button.btn.vote-button-item(ng-class="{'btn-warning': (ctrl.vote.me.value === '0') || !ctrl.vote.me, 'btn-default': (ctrl.vote.me.value !== '0')}", ng-click="ctrl.setVote('0')")
+  button.btn.vote-button-item(
+    ng-click="ctrl.switchVote('0')",
+    ng-disabled="ctrl.vote.me && ctrl.vote.me.value !== '0'",
+    ng-class="{'btn-warning': (ctrl.vote.me.value === '0') || !ctrl.vote.me, 'btn-default': (ctrl.vote.me.value !== '0')}"
+  )
     img(ng-src="vote/images/neutral_vote_gray.svg", ng-show="ctrl.vote.me && (ctrl.vote.me.value !== '0')")
     img(ng-src="vote/images/neutral_vote_orange.svg", ng-show="!ctrl.vote.me || (ctrl.vote.me.value === '0')")
 
-  button.btn.vote-button-item(ng-class="{'btn-danger': (ctrl.vote.me.value === '-1') || !ctrl.vote.me, 'btn-default': (ctrl.vote.me.value !== '-1')}", ng-click="ctrl.setVote('-1')")
+  button.btn.vote-button-item(
+    ng-click="ctrl.switchVote('-1')"
+    ng-disabled="ctrl.vote.me && ctrl.vote.me.value !== '-1'",
+    ng-class="{'btn-danger': (ctrl.vote.me.value === '-1') || !ctrl.vote.me, 'btn-default': (ctrl.vote.me.value !== '-1')}"
+  )
     img(ng-src="vote/images/negative_vote_gray.svg", ng-show="ctrl.vote.me && (ctrl.vote.me.value !== '-1')")
     img(ng-src="vote/images/negative_vote_red.svg", ng-show="!ctrl.vote.me || (ctrl.vote.me.value === '-1')")

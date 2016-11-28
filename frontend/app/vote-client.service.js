@@ -9,7 +9,8 @@
       return {
         getCurrentVote: getCurrentVote,
         getVotes: getVotes,
-        vote: vote
+        vote: vote,
+        unvote: unvote
       };
 
       function _getSource() {
@@ -29,6 +30,10 @@
 
       function vote(targetTuple, value) {
         return ResourceLinkAPI.create(_getSource(), targetTuple, VOTE_LINK_TYPE, value);
+      }
+
+      function unvote(targetTuple) {
+        return ResourceLinkAPI.remove(_getSource(), targetTuple, VOTE_LINK_TYPE);
       }
     }
 })();
