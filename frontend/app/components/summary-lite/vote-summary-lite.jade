@@ -1,0 +1,11 @@
+.vote-summary-lite
+  .badges
+    .badge-positive
+      img(ng-src="vote/images/positive_vote_green.svg")
+      span {{ctrl.votes.stats['1'].value}}
+    .badge-neutral
+      img(ng-src="vote/images/neutral_vote_orange.svg")
+      span {{ctrl.votes.stats['-1'].value}}
+    .badge-negative
+      img(ng-src="vote/images/negative_vote_red.svg")
+      span {{ctrl.votes.stats['0'].value}}

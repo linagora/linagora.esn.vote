@@ -1,0 +1,56 @@
+.vote-summary-lite {
+
+  .voters {
+    .flex-row;
+    .flex-wrap;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .voter {
+      .flex;
+
+      padding-right: 10px;
+      img {
+        .avatar(20px, 100%);
+      }
+    }
+
+    .more-ellipsis {
+      .flex;
+    }
+  }
+
+  .badges {
+    .flex-row;
+    .flex-vertical-centered;
+
+    .badge-positive {
+      .vote-badge(@brand-success);
+    }
+
+    .badge-neutral {
+      .vote-badge(@brand-warning);
+    }
+
+    .badge-negative {
+      .vote-badge(@brand-danger);
+    }
+  }
+}
+
+.vote-badge(@color) {
+  .flex-vertical-centered;
+  margin-right: 10px;
+
+  img {
+    .avatar(20px, 100%);
+    background-color: @color;
+    margin-right: 5px;
+  }
+
+  span {
+    font-size: 14px;
+    color: @secondaryTextColor;
+  }
+}
