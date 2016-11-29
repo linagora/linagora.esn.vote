@@ -13,7 +13,8 @@
         objectType: '=',
         objectId: '=',
         onVote: '&',
-        onUnvote: '&'
+        onUnvote: '&',
+        canVote: '='
       }
     };
 
