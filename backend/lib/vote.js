@@ -32,7 +32,7 @@ module.exports = function(dependencies) {
       });
     }
 
-    return ResourceLink.find({'target.id': targetTuple.id, 'target.objectType': targetTuple.objectType})
+    return ResourceLink.find({'target.id': targetTuple.id, 'target.objectType': targetTuple.objectType, type: CONSTANTS.VOTE_LINK_TYPE})
       .sort('-timestamps.creation')
       .limit(size)
       .then(links => Q.all(links.map(linkAsUser)));
