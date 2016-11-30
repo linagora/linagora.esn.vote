@@ -1,3 +1,3 @@
 .vote
-  vote-button(object-type='ctrl.objectType', object-id='ctrl.objectId', on-vote='ctrl.onVote(value, user)', on-unvote='ctrl.onUnvote(value, user)')
+  vote-button(ng-if='ctrl.canVote', object-type='ctrl.objectType', object-id='ctrl.objectId', on-vote='ctrl.onVote(value, user)', on-unvote='ctrl.onUnvote(value, user)')
   vote-summary(object-type='ctrl.objectType', object-id='ctrl.objectId', votes='ctrl.votes')
