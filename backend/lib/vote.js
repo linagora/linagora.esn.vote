@@ -57,7 +57,7 @@ module.exports = function(dependencies) {
       },
       verbose: true,
       map: function() {
-        emit(this.value, 1);
+        emit(this.value, 1);// eslint-disable-line
       },
       reduce: function(key, values) {
         return values.length;
