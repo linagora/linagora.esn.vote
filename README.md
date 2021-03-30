@@ -1,3 +1,5 @@
+![Archived](https://img.shields.io/badge/Current_Status-archived-blue?style=flat)
+
 # linagora.esn.vote
 
 Vote component for OpenPaaS ESN.
